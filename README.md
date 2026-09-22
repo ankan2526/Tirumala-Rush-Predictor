@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tests Passing](https://img.shields.io/badge/tests-15%20passed-success.svg)]()
 
+**[Live Application](https://tirumala-rush-predictor.onrender.com/)** | **[GitHub Repository](https://github.com/ankan2526/Tirumala-Rush-Predictor)**
+
 An intelligent machine learning and domain-informed forecasting system to predict daily pilgrim footfall, waiting times (**Sarva Darshan & Special Entry ₹300**), and **Vaikuntam Queue Complex (VKC)** compartment occupancy for the Sri Venkateswara Temple at **Tirumala Tirupati Devasthanams (TTD)**.
 
 ---
