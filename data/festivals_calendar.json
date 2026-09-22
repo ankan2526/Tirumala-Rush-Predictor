@@ -1,0 +1,177 @@
+{
+  "festivals": [
+    {
+      "name": "English New Year",
+      "type": "fixed_solar",
+      "month": 1,
+      "day": 1,
+      "crowd_multiplier": 1.45,
+      "description": "Massive annual surge of devotees seeking first blessings of the year."
+    },
+    {
+      "name": "Makara Sankranti / Pongal",
+      "type": "multi_day",
+      "dates": [
+        "2022-01-14", "2022-01-15", "2022-01-16",
+        "2023-01-14", "2023-01-15", "2023-01-16",
+        "2024-01-14", "2024-01-15", "2024-01-16",
+        "2025-01-14", "2025-01-15", "2025-01-16",
+        "2026-01-14", "2026-01-15", "2026-01-16",
+        "2027-01-14", "2027-01-15", "2027-01-16"
+      ],
+      "crowd_multiplier": 1.40,
+      "description": "Major 3-day harvest festival in AP, Telangana, and Tamil Nadu."
+    },
+    {
+      "name": "Rathasapthami",
+      "type": "annual_auspicious",
+      "dates": [
+        "2021-02-19", "2022-02-08", "2023-01-28", "2024-02-16", "2025-02-04", "2026-01-25", "2027-02-13"
+      ],
+      "crowd_multiplier": 1.48,
+      "description": "One-day mini-Brahmotsavam where Lord Malayappa Swamy is taken out in procession on 7 different vahanams in a single day."
+    },
+    {
+      "name": "Ugadi (Telugu New Year)",
+      "type": "lunar_festival",
+      "dates": [
+        "2021-04-13", "2022-04-02", "2023-03-22", "2024-04-09", "2025-03-30", "2026-03-19", "2027-04-07"
+      ],
+      "crowd_multiplier": 1.35,
+      "description": "Telugu New Year Asthanam at Tirumala."
+    },
+    {
+      "name": "Sri Rama Navami",
+      "type": "lunar_festival",
+      "dates": [
+        "2021-04-21", "2022-04-10", "2023-03-30", "2024-04-17", "2025-04-06", "2026-03-27", "2027-04-15"
+      ],
+      "crowd_multiplier": 1.25,
+      "description": "Sri Rama Navami Asthanam in Srivari temple."
+    },
+    {
+      "name": "Varalakshmi Vratam",
+      "type": "lunar_festival",
+      "dates": [
+        "2021-08-20", "2022-08-05", "2023-08-25", "2024-08-16", "2025-08-08", "2026-08-21", "2027-08-13"
+      ],
+      "crowd_multiplier": 1.30,
+      "description": "Highly auspicious Friday festival drawing women devotees across AP, TN, Karnataka."
+    },
+    {
+      "name": "Salakatla Brahmotsavam",
+      "type": "major_festival_window",
+      "ranges": [
+        {"start": "2021-10-07", "end": "2021-10-15", "garuda_seva": "2021-10-11"},
+        {"start": "2022-09-27", "end": "2022-10-05", "garuda_seva": "2022-10-01"},
+        {"start": "2023-09-18", "end": "2023-09-26", "garuda_seva": "2023-09-22"},
+        {"start": "2024-10-04", "end": "2024-10-12", "garuda_seva": "2024-10-08"},
+        {"start": "2025-09-24", "end": "2025-10-02", "garuda_seva": "2025-09-28"},
+        {"start": "2026-10-02", "end": "2026-10-10", "garuda_seva": "2026-10-06"},
+        {"start": "2027-09-21", "end": "2027-09-29", "garuda_seva": "2027-09-25"}
+      ],
+      "crowd_multiplier": 1.55,
+      "garuda_seva_multiplier": 1.70,
+      "description": "The flagship 9-day annual Brahmotsavam. Garuda Seva evening witnesses 2 to 3 lakh pilgrims on the hill shrine."
+    },
+    {
+      "name": "Navaratri Brahmotsavam",
+      "type": "major_festival_window",
+      "ranges": [
+        {"start": "2023-10-15", "end": "2023-10-23", "garuda_seva": "2023-10-19"},
+        {"start": "2026-10-11", "end": "2026-10-19", "garuda_seva": "2026-10-15"}
+      ],
+      "crowd_multiplier": 1.50,
+      "garuda_seva_multiplier": 1.65,
+      "description": "Secondary Brahmotsavam held during Adhika Masam years."
+    },
+    {
+      "name": "Deepavali / Diwali",
+      "type": "lunar_festival",
+      "dates": [
+        "2021-11-04", "2022-10-24", "2023-11-12", "2024-10-31", "2025-10-20", "2026-11-08", "2027-10-29"
+      ],
+      "crowd_multiplier": 1.35,
+      "description": "Deepavali Asthanam at Tirumala."
+    },
+    {
+      "name": "Vaikunta Ekadashi & Dwara Darshanam",
+      "type": "major_festival_window",
+      "ranges": [
+        {"start": "2021-01-13", "end": "2021-01-22", "peak_day": "2021-01-13"},
+        {"start": "2022-01-13", "end": "2022-01-22", "peak_day": "2022-01-13"},
+        {"start": "2023-01-02", "end": "2023-01-11", "peak_day": "2023-01-02"},
+        {"start": "2023-12-23", "end": "2024-01-01", "peak_day": "2023-12-23"},
+        {"start": "2025-01-10", "end": "2025-01-19", "peak_day": "2025-01-10"},
+        {"start": "2025-12-30", "end": "2026-01-08", "peak_day": "2025-12-30"},
+        {"start": "2026-12-19", "end": "2026-12-28", "peak_day": "2026-12-19"},
+        {"start": "2027-12-09", "end": "2027-12-18", "peak_day": "2027-12-09"}
+      ],
+      "crowd_multiplier": 1.65,
+      "peak_day_multiplier": 1.75,
+      "description": "10-day opening of the sacred Vaikunta Dwaram. The holy gateway darshan generates year-round peak demand."
+    }
+  ],
+  "purattasi_season": [
+    {"year": 2021, "start": "2021-09-17", "end": "2021-10-17"},
+    {"year": 2022, "start": "2022-09-18", "end": "2022-10-17"},
+    {"year": 2023, "start": "2023-09-18", "end": "2023-10-17"},
+    {"year": 2024, "start": "2024-09-17", "end": "2024-10-17"},
+    {"year": 2025, "start": "2025-09-17", "end": "2025-10-17"},
+    {"year": 2026, "start": "2026-09-17", "end": "2026-10-17"},
+    {"year": 2027, "start": "2027-09-18", "end": "2027-10-17"}
+  ],
+  "karthika_masam": [
+    {"year": 2021, "start": "2021-11-05", "end": "2021-12-04"},
+    {"year": 2022, "start": "2022-10-26", "end": "2022-11-23"},
+    {"year": 2023, "start": "2023-11-14", "end": "2023-12-12"},
+    {"year": 2024, "start": "2024-11-02", "end": "2024-11-30"},
+    {"year": 2025, "start": "2025-10-21", "end": "2025-11-19"},
+    {"year": 2026, "start": "2026-11-09", "end": "2026-12-08"},
+    {"year": 2027, "start": "2027-10-30", "end": "2027-11-28"}
+  ],
+  "eclipses": [
+    {
+      "date": "2022-10-25",
+      "type": "solar",
+      "closure_hours": 12,
+      "name": "Surya Grahanam (Partial Solar Eclipse)",
+      "impact": "Temple closed for 12 hours. Surge of 85,000+ devotees over next 48 hours."
+    },
+    {
+      "date": "2022-11-08",
+      "type": "lunar",
+      "closure_hours": 11,
+      "name": "Chandra Grahanam (Total Lunar Eclipse)",
+      "impact": "Temple sanctum closed from 8:30 AM to 7:30 PM."
+    },
+    {
+      "date": "2023-10-28",
+      "type": "lunar",
+      "closure_hours": 9,
+      "name": "Chandra Grahanam (Partial Lunar Eclipse)",
+      "impact": "Temple sanctum closed from 7:05 PM to 3:15 AM."
+    },
+    {
+      "date": "2025-09-07",
+      "type": "lunar",
+      "closure_hours": 9,
+      "name": "Chandra Grahanam",
+      "impact": "Temple closed during eclipse duration."
+    },
+    {
+      "date": "2026-03-03",
+      "type": "lunar",
+      "closure_hours": 10,
+      "name": "Chandra Grahanam",
+      "impact": "Closure of sanctum followed by deep cleansing (Suddhi)."
+    },
+    {
+      "date": "2026-08-28",
+      "type": "lunar",
+      "closure_hours": 9,
+      "name": "Chandra Grahanam",
+      "impact": "Temple closed for 9 hours."
+    }
+  ]
+}

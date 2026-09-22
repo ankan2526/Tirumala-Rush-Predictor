@@ -1,0 +1,86 @@
+{
+  "temple": "Sri Venkateswara Swamy Temple, Tirumala",
+  "organization": "Tirumala Tirupati Devasthanams (TTD)",
+  "throughput": {
+    "sanctum_hourly_capacity": 3800,
+    "sanctum_operational_hours_normal": 21,
+    "sanctum_operational_hours_festival": 22.5,
+    "max_daily_sanctum_capacity": 85000,
+    "absolute_surge_limit": 98000
+  },
+  "compartments": {
+    "vkc1_compartments": 18,
+    "vkc2_compartments": 31,
+    "total_compartments": 49,
+    "average_pilgrims_per_compartment": 1800,
+    "max_vkc_capacity": 88200
+  },
+  "darshan_categories": {
+    "sarva_darshan": {
+      "name": "Free / General Sarva Darshan (SSD / Non-token)",
+      "token_type": "SSD / Direct Queue",
+      "base_wait_hours": 8,
+      "max_wait_hours": 38,
+      "description": "General queue through Vaikuntam Queue Complex without prior booking."
+    },
+    "special_entry_darshan": {
+      "name": "Special Entry Darshan (SED Rs 300)",
+      "token_type": "Online Quota Booking",
+      "base_wait_hours": 2.5,
+      "max_wait_hours": 7.0,
+      "description": "Pre-booked online Rs 300 quota ticket entering through Krishna Teja Rest House."
+    },
+    "divya_darshan": {
+      "name": "Divya Darshan (Pedestrian Footpaths)",
+      "token_type": "Alipiri / Srivari Mettu Counters",
+      "base_wait_hours": 6,
+      "max_wait_hours": 16,
+      "description": "Pedestrians trekking Alipiri (3,550 steps) or Srivari Mettu (2,388 steps) with issued tokens."
+    },
+    "vip_break_darshan": {
+      "name": "VIP Break Darshan",
+      "token_type": "Protocol / SRIVANI / Recommendation",
+      "base_wait_hours": 1.0,
+      "max_wait_hours": 2.5,
+      "description": "Morning and afternoon protocol slots. Canceled during peak festivals to accommodate general pilgrims."
+    }
+  },
+  "rush_thresholds": {
+    "low": {
+      "max_pilgrims": 62000,
+      "label": "Low / Peaceful",
+      "color": "#10b981",
+      "badge_class": "badge-low",
+      "sarva_wait_range": "4 - 8 hrs",
+      "sed_wait_range": "1.5 - 2.5 hrs",
+      "compartments_filled_range": "0 - 10"
+    },
+    "moderate": {
+      "max_pilgrims": 73000,
+      "label": "Moderate / Normal",
+      "color": "#f59e0b",
+      "badge_class": "badge-moderate",
+      "sarva_wait_range": "8 - 14 hrs",
+      "sed_wait_range": "2.5 - 3.5 hrs",
+      "compartments_filled_range": "10 - 20"
+    },
+    "high": {
+      "max_pilgrims": 84000,
+      "label": "High Rush / Crowded",
+      "color": "#f97316",
+      "badge_class": "badge-high",
+      "sarva_wait_range": "14 - 22 hrs",
+      "sed_wait_range": "3.5 - 5 hrs",
+      "compartments_filled_range": "20 - 30"
+    },
+    "peak": {
+      "max_pilgrims": 100000,
+      "label": "Peak / Extreme Surge",
+      "color": "#ef4444",
+      "badge_class": "badge-peak",
+      "sarva_wait_range": "22 - 36+ hrs",
+      "sed_wait_range": "5 - 7+ hrs",
+      "compartments_filled_range": "31+ (Outside lines)"
+    }
+  }
+}

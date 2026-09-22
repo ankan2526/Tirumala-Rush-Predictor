@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tirumala Tirupati Darshanam Rush Predictor | Srivari Crowd Forecaster</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Cinzel & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/static/style.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            temple: {
+              gold: '#f59e0b',
+              golddark: '#b45309',
+              goldlight: '#fef3c7',
+              saffron: '#ea580c',
+              dark: '#0a0e17',
+              card: '#111827',
+              border: '#1f2937',
+              subtle: '#374151'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0a0e17] text-slate-100 font-sans min-h-screen flex flex-col selection:bg-amber-500 selection:text-black">
+
+  <!-- TOP DECORATIVE BANNER & HEADER -->
+  <header class="border-b border-amber-900/40 bg-gradient-to-r from-amber-950/40 via-[#111827] to-amber-950/40 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- LOGO & TITLE -->
+      <div class="flex items-center space-x-3.5">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-500/20 border border-amber-400/30">
+          <span class="font-cinzel text-xl font-bold text-amber-950 tracking-wider">॥ॐ॥</span>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-cinzel text-lg sm:text-xl font-bold tracking-wide text-amber-300">
+              Tirumala Rush Predictor
+            </h1>
+            <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/30 font-medium">TTD AI Forecaster</span>
+          </div>
+          <p class="text-xs text-slate-400">Sri Venkateswara Swamy Temple Daily Crowd & Waiting Time Intelligence</p>
+        </div>
+      </div>
+
+      <!-- TODAY'S LIVE GLANCE PILL -->
+      <div id="top-live-pill" class="hidden sm:flex items-center space-x-3 bg-slate-900/90 border border-slate-800 rounded-full px-4 py-1.5 shadow-inner">
+        <div class="flex items-center space-x-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs text-slate-300 font-medium">Today:</span>
+          <span id="header-today-date" class="text-xs font-semibold text-white">--</span>
+        </div>
+        <div class="h-3.5 w-px bg-slate-700"></div>
+        <div class="flex items-center space-x-1.5">
+          <span id="header-today-badge" class="text-xs px-2 py-0.5 rounded font-bold uppercase">--</span>
+          <span id="header-today-wait" class="text-xs text-amber-400 font-semibold">--</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto scrollbar-none space-x-1 sm:space-x-4 border-t border-slate-800/80 pt-2 pb-1">
+      <button onclick="switchTab('calendar')" id="tab-btn-calendar" class="nav-tab active flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-semibold transition">
+        <i data-lucide="calendar" class="w-4 h-4"></i>
+        <span>Rush Calendar</span>
+      </button>
+      <button onclick="switchTab('predict')" id="tab-btn-predict" class="nav-tab flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-semibold transition">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>Date Predictor</span>
+      </button>
+      <button onclick="switchTab('optimizer')" id="tab-btn-optimizer" class="nav-tab flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-semibold transition">
+        <i data-lucide="compass" class="w-4 h-4"></i>
+        <span>Trip Planner</span>
+      </button>
+      <button onclick="switchTab('insights')" id="tab-btn-insights" class="nav-tab flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-semibold transition">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+        <span>Trends & Insights</span>
+      </button>
+      <button onclick="switchTab('guide')" id="tab-btn-guide" class="nav-tab flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-semibold transition">
+        <i data-lucide="book-open" class="w-4 h-4"></i>
+        <span>Devotee Guide</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+    <!-- ==================================================================== -->
+    <!-- TAB 1: RUSH CALENDAR (HEATMAP) -->
+    <!-- ==================================================================== -->
+    <section id="tab-calendar" class="tab-content space-y-6">
+      
+      <!-- Calendar Controls & Legend Bar -->
+      <div class="bg-[#111827] border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+        
+        <!-- Month & Year Navigation -->
+        <div class="flex items-center space-x-3">
+          <button onclick="changeMonth(-1)" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white transition border border-slate-700">
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+          </button>
+          
+          <div class="text-center min-w-[180px]">
+            <h2 id="cal-month-title" class="text-xl font-bold font-cinzel text-amber-300">September 2026</h2>
+            <p id="cal-season-subtitle" class="text-xs text-slate-400">Purattasi Masam & Brahmotsavam Season</p>
+          </div>
+
+          <button onclick="changeMonth(1)" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white transition border border-slate-700">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
+
+          <button onclick="jumpToToday()" class="px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-semibold border border-amber-500/30 transition">
+            Today
+          </button>
+        </div>
+
+        <!-- Color Legend -->
+        <div class="flex flex-wrap items-center gap-3 text-xs">
+          <span class="text-slate-400 font-medium mr-1">Rush Tiers:</span>
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+            <span class="text-slate-300">Low (&lt;60k | 4-8h)</span>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+            <span class="text-slate-300">Moderate (60-72k | 8-14h)</span>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-orange-500"></span>
+            <span class="text-slate-300">High (72-84k | 14-22h)</span>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-rose-600"></span>
+            <span class="text-slate-300 font-semibold">Peak (&gt;84k | 22-36h+)</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CALENDAR GRID -->
+      <div class="bg-[#111827] border border-slate-800 rounded-2xl p-3 sm:p-5 shadow-2xl overflow-hidden">
+        
+        <!-- Day of Week Headers -->
+        <div class="grid grid-cols-7 gap-1 sm:gap-2 mb-2 text-center text-xs font-semibold text-slate-400 uppercase tracking-wider py-1 border-b border-slate-800">
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div class="text-amber-400 font-bold">Sat</div>
+          <div class="text-amber-400 font-bold">Sun</div>
+        </div>
+
+        <!-- Calendar Cells Container -->
+        <div id="calendar-days-grid" class="grid grid-cols-7 gap-1 sm:gap-2.5 min-h-[420px]">
+          <!-- Injected via JavaScript -->
+        </div>
+
+      </div>
+
+      <!-- Quick Calendar Advice Card -->
+      <div class="bg-gradient-to-r from-amber-950/30 to-slate-900 border border-amber-900/30 rounded-xl p-4 flex items-start space-x-3 text-sm text-slate-300">
+        <i data-lucide="info" class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5"></i>
+        <div>
+          <strong class="text-amber-300">Pro-Tip for Pilgrims:</strong>
+          Click on any day in the calendar to view a complete breakdown of that day's expected waiting time, Vaikuntam compartments, auspicious tithi, and tactical arrival advice.
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 2: DATE PREDICTOR (DEEP DIVE) -->
+    <!-- ==================================================================== -->
+    <section id="tab-predict" class="tab-content hidden space-y-6">
+      
+      <!-- Date Picker Bar & Quick Buttons -->
+      <div class="bg-[#111827] border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg font-bold text-white font-cinzel">Select Any Date to Predict</h2>
+            <p class="text-xs text-slate-400">Evaluate religious tithi, weekend surge, school calendars, and queue physics</p>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <input type="date" id="predict-input-date" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500" />
+            <button onclick="fetchDatePrediction()" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-sm rounded-lg shadow-lg shadow-amber-500/20 transition flex items-center space-x-1.5">
+              <i data-lucide="search" class="w-4 h-4"></i>
+              <span>Forecast</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Landmark Dates -->
+        <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80 text-xs">
+          <span class="text-slate-400 font-medium">Try key dates:</span>
+          <button onclick="setAndPredictDate('today')" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Today</button>
+          <button onclick="setAndPredictDate('next-sat')" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Upcoming Saturday</button>
+          <button onclick="setAndPredictDate('2026-10-06')" class="px-2.5 py-1 rounded-md bg-rose-950/40 border border-rose-800/40 text-rose-300 hover:bg-rose-900/40">Brahmotsavam Garuda Seva (Oct 6, 2026)</button>
+          <button onclick="setAndPredictDate('2026-12-19')" class="px-2.5 py-1 rounded-md bg-amber-950/40 border border-amber-800/40 text-amber-300 hover:bg-amber-900/40">Vaikuntha Ekadashi (Dec 19, 2026)</button>
+          <button onclick="setAndPredictDate('2027-03-10')" class="px-2.5 py-1 rounded-md bg-emerald-950/40 border border-emerald-800/40 text-emerald-300 hover:bg-emerald-900/40">Exam Season Wednesday (Mar 10, 2027 - Lean)</button>
+        </div>
+      </div>
+
+      <!-- PREDICTION RESULTS CARD -->
+      <div id="prediction-result-container" class="space-y-6">
+        <!-- Injected via JavaScript -->
+        <div class="text-center py-16 text-slate-500">
+          <i data-lucide="loader-2" class="w-8 h-8 animate-spin mx-auto text-amber-400 mb-2"></i>
+          <p>Calculating crowd metrics...</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 3: TRIP PLANNER (BEST VISIT WINDOW) -->
+    <!-- ==================================================================== -->
+    <section id="tab-optimizer" class="tab-content hidden space-y-6">
+      
+      <!-- Planner Form -->
+      <div class="bg-[#111827] border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+        <div>
+          <h2 class="text-lg font-bold text-white font-cinzel flex items-center space-x-2">
+            <i data-lucide="compass" class="w-5 h-5 text-amber-400"></i>
+            <span>Optimal Visit Window Recommender</span>
+          </h2>
+          <p class="text-xs text-slate-400">Find the least crowded days within your travel window and save up to 20+ hours of waiting time</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">From Date</label>
+            <input type="date" id="opt-start-date" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">To Date</label>
+            <input type="date" id="opt-end-date" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Darshan Category</label>
+            <select id="opt-darshan-type" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500">
+              <option value="all">Free Sarva Darshan (SSD / General)</option>
+              <option value="sed">Special Entry Darshan (SED ₹300)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="runTripOptimizer()" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-sm rounded-lg shadow-lg shadow-amber-500/20 transition flex items-center space-x-2">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            <span>Find Best Days</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Optimization Results -->
+      <div id="optimizer-results-container" class="space-y-4">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 4: TRENDS & INSIGHTS -->
+    <!-- ==================================================================== -->
+    <section id="tab-insights" class="tab-content hidden space-y-6">
+      
+      <!-- High Level Insights Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Day of Week Distribution -->
+        <div class="bg-[#111827] border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-cinzel font-bold text-amber-300">Crowd by Day of the Week</h3>
+              <p class="text-xs text-slate-400">Historical average footfall and waiting times</p>
+            </div>
+            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">7-Day Cycle</span>
+          </div>
+
+          <div id="dow-chart-container" class="space-y-2.5 pt-2">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Monthly Seasonality -->
+        <div class="bg-[#111827] border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-cinzel font-bold text-amber-300">Annual Seasonality Trends</h3>
+              <p class="text-xs text-slate-400">Monthly surge multiplier vs normal baseline</p>
+            </div>
+            <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">12-Month Curve</span>
+          </div>
+
+          <div id="monthly-chart-container" class="grid grid-cols-3 sm:grid-cols-4 gap-2 pt-2 text-xs">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Feature Importance & ML Architecture -->
+      <div class="bg-[#111827] border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="font-cinzel font-bold text-amber-300 text-base">Predictive Factors & Feature Importance</h3>
+            <p class="text-xs text-slate-400">Relative impact percentage of each variable on daily crowd surges</p>
+          </div>
+          <div id="model-metrics-pill" class="text-xs text-slate-400">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <div id="feature-importance-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-2 text-xs">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 5: DEVOTEE GUIDE -->
+    <!-- ==================================================================== -->
+    <section id="tab-guide" class="tab-content hidden space-y-6">
+      
+      <div class="bg-[#111827] border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+        <div>
+          <h2 class="font-cinzel text-xl font-bold text-amber-300">Complete Tirumala Pilgrim Survival & Darshan Guide</h2>
+          <p class="text-xs text-slate-400">Key timings, counter locations, dress codes, and compartment navigation</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-sm">
+          
+          <!-- Card 1 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 space-y-2.5">
+            <div class="flex items-center space-x-2 text-amber-400 font-bold font-cinzel">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>Vaikuntam Complex (VKC)</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              VKC 1 and VKC 2 house 49 compartments. Each compartment holds roughly 1,500–1,800 devotees. Once locked inside a compartment, release occurs in batches into the bridge corridor leading directly to the temple sanctum.
+            </p>
+            <div class="text-[11px] text-amber-300/80 bg-amber-500/10 p-2 rounded border border-amber-500/20">
+              Free hot Annaprasadam, Sambhar rice, curd rice, hot milk, and drinking water are served continuously by Srivari Sevaks inside all compartments.
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 space-y-2.5">
+            <div class="flex items-center space-x-2 text-amber-400 font-bold font-cinzel">
+              <i data-lucide="ticket" class="w-4 h-4"></i>
+              <span>SSD Token Counters in Tirupati</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Free Slotted Sarva Darshan (SSD) biometric tokens are issued daily at 3 major hubs in Tirupati down the hill:
+            </p>
+            <ul class="text-xs text-slate-400 list-disc list-inside space-y-1">
+              <li><strong class="text-slate-200">Bhudevi Complex:</strong> Near Alipiri bus station.</li>
+              <li><strong class="text-slate-200">Srinivasam Complex:</strong> Opposite Tirupati Central Bus Stand.</li>
+              <li><strong class="text-slate-200">Govindaraja Choultries:</strong> Behind Tirupati Railway Station.</li>
+            </ul>
+            <div class="text-[11px] text-slate-400">Tokens open around 4:00 AM – 5:00 AM and exhaust in 2 to 4 hours on peak days. Aadhaar card is strictly required.</div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 space-y-2.5">
+            <div class="flex items-center space-x-2 text-amber-400 font-bold font-cinzel">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+              <span>Rules & Dress Code</span>
+            </div>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li><strong class="text-amber-300">Men:</strong> White Dhoti / Pancha with Kurta / Angavastram, or Pyjama with Kurta. Shirts allowed; jeans, shorts, and t-shirts strictly banned.</li>
+              <li><strong class="text-amber-300">Women:</strong> Traditional Saree, Half-Saree, or Chudidar with Dupatta pinned. Western garments are not allowed.</li>
+              <li><strong class="text-amber-300">Electronics:</strong> Mobile phones, smartwatches, cameras, and luggage must be deposited at free TTD locker counters.</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-[#0d131f] py-5 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center space-x-2">
+        <span class="font-cinzel text-amber-400 font-semibold">Tirumala Rush Predictor</span>
+        <span>•</span>
+        <span>Dedicated to Lord Sri Venkateswara Swamy</span>
+      </div>
+      <div class="text-slate-400">
+        Empirical TTD Model &copy; 2026 | Accurate Lunar Panchangam & Queue Physics Engine
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL FOR CALENDAR DAY CLICK -->
+  <div id="day-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#111827] border border-slate-700 max-w-lg w-full rounded-2xl p-6 shadow-2xl space-y-4 relative">
+      <button onclick="closeDayModal()" class="absolute top-4 right-4 p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="modal-day-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom App JS -->
+  <script src="/static/app.js"></script>
+</body>
+</html>

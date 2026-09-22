@@ -1,0 +1,59 @@
+{
+  "trained_at": "2026-09-22T10:56:14.558624",
+  "train_samples": 2474,
+  "test_samples": 628,
+  "pilgrims_model": {
+    "mae": 7811.0,
+    "rmse": 11044.3,
+    "r2": 0.581,
+    "weights": {
+      "intercept": 53961.7372,
+      "day_of_week": 639.1324,
+      "is_weekend": 9364.5951,
+      "is_extended_weekend": 9324.6389,
+      "is_ekadashi": 6209.7196,
+      "is_pournami": 6264.5757,
+      "is_purattasi_saturday": 7148.2323,
+      "is_karthika_masam": 3489.856,
+      "is_major_festival": 19836.0769,
+      "is_exam_season": -9100.1723,
+      "is_summer_vacation": 14572.9465,
+      "is_public_holiday": 6080.3222,
+      "holiday_count": 6080.3222
+    }
+  },
+  "sarva_wait_hours_model": {
+    "mae": 4.53,
+    "rmse": 6.94,
+    "r2": 0.556,
+    "weights": {
+      "intercept": 6.8474,
+      "day_of_week": 0.2242,
+      "is_weekend": 5.2047,
+      "is_extended_weekend": 6.667,
+      "is_ekadashi": 3.3933,
+      "is_pournami": 3.5929,
+      "is_purattasi_saturday": 6.1822,
+      "is_karthika_masam": 1.1179,
+      "is_major_festival": 13.8144,
+      "is_exam_season": -4.7642,
+      "is_summer_vacation": 7.9431,
+      "is_public_holiday": 3.3633,
+      "holiday_count": 3.3633
+    }
+  },
+  "feature_importance_pct": {
+    "is_major_festival": 20.22,
+    "is_summer_vacation": 14.85,
+    "is_weekend": 9.54,
+    "is_extended_weekend": 9.5,
+    "is_exam_season": 9.28,
+    "is_purattasi_saturday": 7.29,
+    "is_pournami": 6.39,
+    "is_ekadashi": 6.33,
+    "is_public_holiday": 6.2,
+    "holiday_count": 6.2,
+    "is_karthika_masam": 3.56,
+    "day_of_week": 0.65
+  }
+}

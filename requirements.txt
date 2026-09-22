@@ -1,0 +1,8 @@
+# Optional dependencies for extended data science workflows
+# The core prediction engine, API, and web UI operate with 0 external dependencies!
+# To install optional ML extensions:
+# pip install -r requirements.txt
+
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
